@@ -1,3 +1,7 @@
+using Autofac;
+using Autofac.Extensions.DependencyInjection;
+using ECommerce.API.Mapping;
+using ECommerce.API.Moduls;
 using ECommerce.DataAccessLayer.Concrete;
 using Microsoft.EntityFrameworkCore;
 
@@ -5,6 +9,9 @@ var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddDbContext<Context>(opt => opt.UseSqlServer(builder.Configuration.GetConnectionString("SqlCon")));
+builder.Host.UseServiceProviderFactory(new AutofacServiceProviderFactory());
+builder.Host.ConfigureContainer<ContainerBuilder>(containerBuilder => containerBuilder.RegisterModule(new ServiceDalModul()));
+builder.Services.AddAutoMapper(typeof(MapProfile));
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();

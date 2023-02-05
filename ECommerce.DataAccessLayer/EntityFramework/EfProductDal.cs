@@ -10,10 +10,10 @@ using System.Threading.Tasks;
 
 namespace ECommerce.DataAccessLayer.EntityFramework
 {
-    public class ProductDal : GenericDal<Product>, IProductDal
+    public class EfProductDal : GenericDal<Product>, IProductDal
     {
-        public ProductDal(Context context) : base(context)
+        public EfProductDal(Context context) : base(context)
         {
-        }
+        }       
     }
 }

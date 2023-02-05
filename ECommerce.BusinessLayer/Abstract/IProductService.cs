@@ -5,9 +5,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ECommerce.DataAccessLayer.Abstract
+namespace ECommerce.BusinessLayer.Abstract
 {
-    public interface IProductDal:IGenericDal<Product>
-    {       
+    public interface IProductService:IGenericService<Product>
+    {
     }
 }
